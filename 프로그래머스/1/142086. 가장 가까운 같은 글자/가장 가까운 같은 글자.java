@@ -7,12 +7,10 @@ class Solution {
         Map<Character, Integer> store = new HashMap<>();
 
         for (int i = 0; i < s.length(); i++) {
-            if (!store.containsKey(s.charAt(i))) {
-                answer[i] = -1;
-            } else {
-                answer[i] = i - store.get(s.charAt(i));
-            }
-            store.put(s.charAt(i), i);
+            char c = s.charAt(i);
+            
+            answer[i] = i - store.getOrDefault(c, i + 1);
+            store.put(c, i);
         }
         
         return answer;
